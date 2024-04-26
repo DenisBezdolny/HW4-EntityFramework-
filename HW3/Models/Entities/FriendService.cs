@@ -5,25 +5,25 @@ using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace HW4.Models.Entities
 {
-    public class Friend:IFriendService
+    public class FriendService:IFriendService
     {
 
         public int FriendId { get; set; }
         public string FriendName { get; set; }
         public string Place { get; set; }
 
-        public List<Friend> GetFriends()
+        public List<FriendService> GetFriends()
         {
             string filePath = "friends.json";
             if (File.Exists(filePath))
             {
                 string jsonString = File.ReadAllText(filePath);
-                Friend[] friends = JsonSerializer.Deserialize<Friend[]>(jsonString);
+                FriendService[] friends = JsonSerializer.Deserialize<FriendService[]>(jsonString);
                 return friends.ToList();
             }
             else
             {
-                return new List<Friend>();
+                return new List<FriendService>();
             }
         }
 
@@ -32,11 +32,11 @@ namespace HW4.Models.Entities
             string filePath = "friends.json";
             if (!File.Exists(filePath))
             {
-                List<Friend> friendList = new List<Friend>()
+                List<FriendService> friendList = new List<FriendService>()
                 {
-                    new Friend{ FriendId = 1,  FriendName = "Ivan",  Place = "Minsk" },
-                    new Friend{ FriendId = 2,  FriendName = "Sergey", Place = "Grodno" },
-                    new Friend{ FriendId = 3,  FriendName = "Maria",  Place = "Gomel" }
+                    new FriendService{ FriendId = 1,  FriendName = "Ivan",  Place = "Minsk" },
+                    new FriendService{ FriendId = 2,  FriendName = "Sergey", Place = "Grodno" },
+                    new FriendService{ FriendId = 3,  FriendName = "Maria",  Place = "Gomel" }
                 };
 
                 string jsonString = JsonConvert.SerializeObject(friendList);

@@ -5,9 +5,9 @@ namespace HW4.Models.Entities
 {
     public class StubFriendService : IFriendService
     {
-        public List<Friend> GetFriends()
+        public List<FriendService> GetFriends()
         {
-            return new List<Friend>();
+            return new List<FriendService>();
         }
 
         public void CreateFriendsFile()

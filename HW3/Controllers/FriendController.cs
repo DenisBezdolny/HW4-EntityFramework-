@@ -26,7 +26,7 @@ namespace HW4.Controllers
                 friendService.CreateFriendsFile();
             }
 
-            List<Friend> friends = friendService.GetFriends();
+            List<FriendService> friends = friendService.GetFriends();
             return View(friends);
         }
         //public ActionResult Create()

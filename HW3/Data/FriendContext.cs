@@ -8,6 +8,6 @@ namespace HW4.Data
     {
         public FriendContext(DbContextOptions<FriendContext> options) : base(options) { }
 
-        public DbSet<Friend> Friend { get; set; }
+        public DbSet<FriendService> Friend { get; set; }
     }
 }
