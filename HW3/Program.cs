@@ -1,5 +1,7 @@
+using HW4.Data;
 using HW4.Models.Abstract_entities;
 using HW4.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -10,6 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<FriendContext>(x=>x.UseSqlServer(connection));
+
 
 
 bool isDevelopment = builder.Environment.IsDevelopment();
