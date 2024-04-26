@@ -1,6 +1,6 @@
-﻿using HW3.Models.Entities;
+﻿using HW4.Models.Entities;
 
-namespace HW3.Models.Abstract_entities
+namespace HW4.Models.Abstract_entities
 {
     public interface IFriendService
     {

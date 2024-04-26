@@ -1,9 +1,9 @@
-﻿using HW3.Models.Abstract_entities;
+﻿using HW4.Models.Abstract_entities;
 using Newtonsoft.Json;
 using System.Text.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace HW3.Models.Entities
+namespace HW4.Models.Entities
 {
     public class Friend:IFriendService
     {

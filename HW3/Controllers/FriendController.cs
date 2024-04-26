@@ -1,10 +1,10 @@
-﻿using HW3.Models.Abstract_entities;
-using HW3.Models.Entities;
+﻿using HW4.Models.Abstract_entities;
+using HW4.Models.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace HW3.Controllers
+namespace HW4.Controllers
 {
     public class FriendController : Controller
     {
