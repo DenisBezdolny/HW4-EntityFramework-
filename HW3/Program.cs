@@ -4,6 +4,7 @@ using HW4.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 
 
@@ -17,9 +18,7 @@ string connection = builder.Configuration.GetConnectionString("DefaultConnection
 builder.Services.AddDbContext<FriendContext>(x=>x.UseSqlServer(connection));
 
 
-
 bool isDevelopment = builder.Environment.IsDevelopment();
-
 
 if (isDevelopment)
 {
@@ -31,8 +30,17 @@ else
 }
 
 
+
+
 var app = builder.Build();
 
+//add db migrations aplly to db
+var scope = app.Services.CreateScope();
+using (scope)
+{
+    var db = scope.ServiceProvider.GetRequiredService<FriendContext>();
+    db.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
