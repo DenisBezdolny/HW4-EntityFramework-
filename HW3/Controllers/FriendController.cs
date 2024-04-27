@@ -18,13 +18,13 @@ namespace HW4.Controllers
         public ActionResult Index()
         {
 
-            if (System.IO.File.Exists("friends.json"))
-            {
-            }
-            else
-            {
-                friendService.CreateFriendsFile();
-            }
+            //if (System.IO.File.Exists("friends.json"))
+            //{
+            //}
+            //else
+            //{
+            //    friendService.CreateFriendsFile();
+            //}
 
             List<FriendService> friends = friendService.GetFriends();
             return View(friends);

@@ -10,9 +10,9 @@ namespace HW4.Models.Entities
             return new List<FriendService>();
         }
 
-        public void CreateFriendsFile()
-        {
-            return ;
-        }
+        //public void CreateFriendsFile()
+        //{
+        //    return ;
+        //}
     }
 }

@@ -5,6 +5,6 @@ namespace HW4.Models.Abstract_entities
     public interface IFriendService
     {
         public List<FriendService> GetFriends();
-        public void CreateFriendsFile();
+        //public void CreateFriendsFile();
     }
 }

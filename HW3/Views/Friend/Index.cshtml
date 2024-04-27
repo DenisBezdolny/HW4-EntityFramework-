@@ -14,15 +14,15 @@
     @foreach (var friend in Model)
     {
         <tr>
-            <td>@friend.FriendId</td>
+            <td>@friend.Id</td>
             <td>@friend.FriendName</td>
             <td>@friend.Place</td>
             <td>
-                <a href="@Url.Action("Edit", new { id = friend.FriendId })" class="btn btn-primary">Edit</a>
+                <a href="@Url.Action("Edit", new { id = friend.Id })" class="btn btn-primary">Edit</a>
             </td>
             <td>||</td>
             <td>
-                <a href="@Url.Action("Delete", new { id = friend.FriendId })" class="btn btn-primary">Delete</a>
+                <a href="@Url.Action("Delete", new { id = friend.Id })" class="btn btn-primary">Delete</a>
             </td>
 
         </tr>
