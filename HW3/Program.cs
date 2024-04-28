@@ -22,7 +22,7 @@ bool isDevelopment = builder.Environment.IsDevelopment();
 
 if (isDevelopment)
 {
-    builder.Services.AddTransient<IFriendService, StubFriendService>();
+    builder.Services.AddTransient<IFriendService, FriendService>();
 }
 else
 {
