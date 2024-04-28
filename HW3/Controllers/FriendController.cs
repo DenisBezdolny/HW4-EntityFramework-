@@ -2,6 +2,7 @@
 using HW4.Models.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting.Internal;
 using Newtonsoft.Json;
 
 namespace HW4.Controllers
@@ -10,29 +11,35 @@ namespace HW4.Controllers
     {
 
         IFriendService friendService;
-                public FriendController(IFriendService friendService)
+        public FriendController(IFriendService friendService)
         {
             this.friendService = friendService;
         }
 
         public ActionResult Index()
         {
-
-            //if (System.IO.File.Exists("friends.json"))
-            //{
-            //}
-            //else
-            //{
-            //    friendService.CreateFriendsFile();
-            //}
-
             List<FriendService> friends = friendService.GetFriends();
             return View(friends);
         }
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(FriendService friend)
+        {
+
+            if (ModelState.IsValid)
+            {
+                friendService.Create(friend);
+
+                return RedirectToAction(nameof(Index));
+            }
+            return View(friend);
+        }
+
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]
@@ -61,7 +68,7 @@ namespace HW4.Controllers
         //{
         //    if (ModelState.IsValid)
         //    {
-                
+
         //        friendList[friend.FriendId - 1].FriendName = friend.FriendName;
         //        friendList[friend.FriendId - 1].Place = friend.Place;
 
