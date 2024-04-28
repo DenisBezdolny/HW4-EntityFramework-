@@ -5,9 +5,21 @@ namespace HW4.Models.Entities
 {
     public class StubFriendService : IFriendService
     {
+        public bool Create(FriendService friend)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<FriendService> GetFriends()
         {
-            return new List<FriendService>();
+            throw new NotImplementedException();
+        }
+
+
+
+        void IFriendService.RemoveFriend(int friendId)
+        {
+            throw new NotImplementedException();
         }
 
         //public void CreateFriendsFile()
