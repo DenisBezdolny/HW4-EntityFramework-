@@ -1,4 +1,5 @@
-﻿using HW4.Models.Abstract_entities;
+﻿using HW4.Data;
+using HW4.Models.Abstract_entities;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
@@ -8,26 +9,71 @@ namespace HW4.Models.Entities
 {
     public class FriendService : IFriendService
     {
-        
+
+        private readonly FriendContext _context;
+        public FriendService() 
+        {    
+        }
+
+        public FriendService(FriendContext context)
+        {
+            _context = context;
+        }
+
+
         public int Id { get; set; }
         public string FriendName { get; set; }
         public string Place { get; set; }
         public int FriendAge { get; set; }
 
-        public List<FriendService> GetFriends()
+        public bool Create(FriendService friend)
         {
-            string filePath = "friends.json";
-            if (File.Exists(filePath))
+            try
             {
-                string jsonString = File.ReadAllText(filePath);
-                FriendService[] friends = JsonSerializer.Deserialize<FriendService[]>(jsonString);
-                return friends.ToList();
+                _context.Friend.Add(friend);
+                _context.SaveChanges();
+                return true;
             }
-            else
+            catch (Exception)
             {
-                return new List<FriendService>();
+                
+                return false;
             }
         }
+
+
+
+        public List<FriendService> GetFriends()
+        {
+            return _context.Friend.ToList();
+        }
+
+        public void RemoveFriend(int friendId)
+        {
+            var friend = _context.Friend.FirstOrDefault(f => f.Id == friendId);
+            if (friend != null)
+            {
+                _context.Friend.Remove(friend);
+                _context.SaveChanges();
+            }
+        }
+
+
+
+        //public List<FriendService> GetFriends()
+        //{
+        //    string filePath = "friends.json";
+        //    if (File.Exists(filePath))
+        //    {
+        //        string jsonString = File.ReadAllText(filePath);
+        //        FriendService[] friends = JsonSerializer.Deserialize<FriendService[]>(jsonString);
+        //        return friends.ToList();
+        //    }
+        //    else
+        //    {
+        //        return new List<FriendService>();
+        //    }
+        //}
 
         //public void CreateFriendsFile()
         //{
